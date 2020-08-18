@@ -5,13 +5,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const colors = require('colors');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
+
+const connectDB = require('./config/db');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const morgan = require('morgan');
+
 
 // Load the environment variables
 dotenv.config({ path: './config/config.env' });
+
+// Connection to MongoDB Atlas
+connectDB();
 
 const app = express();
 
@@ -32,7 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,7 +55,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const PORT = 8080;
+const PORT = 3000;
 
 const server = app.listen(
   PORT, console.log(colors.blue.bold(`The server is running in ${process.env.NODE_ENV} mode on PORT:${PORT}`))
