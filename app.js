@@ -55,7 +55,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const PORT = 3000;
+const PORT = 7246;
 
 const server = app.listen(
   PORT, console.log(colors.blue.bold(`The server is running in ${process.env.NODE_ENV} mode on PORT:${PORT}`))

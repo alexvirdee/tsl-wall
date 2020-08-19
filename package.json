@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "dev": "nodemon server",
+    "client": "npm start --prefix ./client",
+    "reactandnode": "concurrently \"npm run dev\" \"npm run client\"",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
