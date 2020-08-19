@@ -9,8 +9,9 @@ const morgan = require('morgan');
 
 const connectDB = require('./config/db');
 
+// Routes
 const indexRouter = require('./routes/index');
-
+const users = require('./routes/api/users');
 
 // Load the environment variables
 dotenv.config({ path: './config/config.env' });
@@ -35,9 +36,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(express.static(path.join(__dirname, 'public')));
 }
 
-
+// Mount routers
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/api/users', users)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
