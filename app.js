@@ -38,6 +38,8 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/', indexRouter);
+
+// Admin functionality ----> Remember to comment out on production since it is currently not protected. This is used to view and create users in the mongo db via postman.
 app.use('/api/users', users)
 
 

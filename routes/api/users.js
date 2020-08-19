@@ -9,7 +9,9 @@ const User = require('../../models/User');
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get((User), getUsers).post(createUser)
+const advancedResults = require('../../middleware/advancedResults');
+
+router.route('/').get(advancedResults(User), getUsers).post(createUser)
 
 router.route('/:id').get(getUser);
 
